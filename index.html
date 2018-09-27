@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <link rel="icon" type="image/png" href="fav.png">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Promiself</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/grayscale.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Argenta Official</a>
+        <button class="navbar-toggler argenta navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars argenta"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about">Promiself</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#projects">Knowledge</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#signup">Subscribe</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead">
+      <div class="container d-flex h-100 align-items-center">
+        <div class="mx-auto text-center">
+          <h1 class="mx-auto my-0 text-uppercase">PROMISELF</h1>
+          <center>
+          <h2 class="text-white-50 mx-auto mt-2 mb-5">Promise to yourself)</h2>
+          <center>
+          <a href="#about" class="btn btn-dark js-scroll-trigger">GO TO PROMISELF</a>
+          </center>
+        </div>
+      </div>
+    </header>
+
+    <!-- About Section -->
+    <center>
+    <section id="about" class="about-section text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+<div class="bungkus">
+
+            <h2 class="text-white mb-4">Set your time here</h2>
+
+            
+
+<form action="" method="">
+<div id="jsalarmclock">
+<br>
+<div id="kuren">
+<div><div class="leftcolumn">Current Time <br>
+<span id="jsalarm_ct" style="letter-spacing: 2px"></span></div>
+<br></div></div>
+
+<center>
+<div id="alar">
+<div><div class="leftcolumn">SET ALARM <br>
+<span><select class="selectpicker"></select>Hour</span><span><select></select> Minutes</span> <span><select></select> Seconds</span></div></div>
+<br></div>
+
+
+<center>
+<div id="aksi">
+<div><div class="leftcolumn">Set Alarm Action <br>
+</center>
+<input class="form-control"  type="text" id="musicloc" size="55" value="Paste your link here" /><span style="font: normal 11px Tahoma"></span></div></div>
+<br>
+<input  type="submit" value="Set Alarm!" id="submitbutton" type="button" class="btn btn-outline-secondary" /> <input type="reset" type="button" class="btn btn-outline-secondary" value="reset" id="resetbutton" />
+</div></div>
+<br>
+<br>
+<br>
+</form>
+</center>
+<script type="text/javascript">
+
+/***********************************************
+
+* JavaScript Alarm Clock- by JavaScript Kit (www.javascriptkit.com)
+* This notice must stay intact for usage
+* Visit JavaScript Kit at http://www.javascriptkit.com/ for this script and 100s more
+
+***********************************************/
+
+var jsalarm={
+  padfield:function(f){
+    return (f<10)? "0"+f : f
+  },
+  showcurrenttime:function(){
+    var dateobj=new Date()
+    var ct=this.padfield(dateobj.getHours())+":"+this.padfield(dateobj.getMinutes())+":"+this.padfield(dateobj.getSeconds())
+    this.ctref.innerHTML=ct
+    this.ctref.setAttribute("title", ct)
+    if (typeof this.hourwake!="undefined"){ //if alarm is set
+      if (this.ctref.title==(this.hourwake+":"+this.minutewake+":"+this.secondwake)){
+        clearInterval(jsalarm.timer)
+        window.location=document.getElementById("musicloc").value
+      }
+    }
+  },
+  init:function(){
+    var dateobj=new Date()
+    this.ctref=document.getElementById("jsalarm_ct")
+    this.submitref=document.getElementById("submitbutton")
+    this.submitref.onclick=function(){
+      jsalarm.setalarm()
+      this.value="Alarm Set"
+      this.disabled=true
+      return false
+    }
+    this.resetref=document.getElementById("resetbutton")
+    this.resetref.onclick=function(){
+    jsalarm.submitref.disabled=false
+    jsalarm.hourwake=undefined
+    jsalarm.hourselect.disabled=false
+    jsalarm.minuteselect.disabled=false
+    jsalarm.secondselect.disabled=false
+    return false
+    }
+    var selections=document.getElementsByTagName("select")
+    this.hourselect=selections[0]
+    this.minuteselect=selections[1]
+    this.secondselect=selections[2]
+    for (var i=0; i<60; i++){
+      if (i<24) //If still within range of hours field: 0-23
+      this.hourselect[i]=new Option(this.padfield(i), this.padfield(i), false, dateobj.getHours()==i)
+      this.minuteselect[i]=new Option(this.padfield(i), this.padfield(i), false, dateobj.getMinutes()==i)
+      this.secondselect[i]=new Option(this.padfield(i), this.padfield(i), false, dateobj.getSeconds()==i)
+
+    }
+    jsalarm.showcurrenttime()
+    jsalarm.timer=setInterval(function(){jsalarm.showcurrenttime()}, 1000)
+  },
+  setalarm:function(){
+    this.hourwake=this.hourselect.options[this.hourselect.selectedIndex].value
+    this.minutewake=this.minuteselect.options[this.minuteselect.selectedIndex].value
+    this.secondwake=this.secondselect.options[this.secondselect.selectedIndex].value
+    this.hourselect.disabled=true
+    this.minuteselect.disabled=true
+    this.secondselect.disabled=true
+  }
+}
+
+jsalarm.init()
+
+</script>
+</div>
+          </div>
+
+    </section>
+
+<!-- ALARM +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+            
+          </div>
+        </div>
+        <img src="img/ipad.png" class="img-fluid" alt="">
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section bg-light">
+      <div class="container">
+        <center>
+<h4 style="font-fami":"Roboto", class="text-dark">KNOWLEDGE</h4>
+</center>
+<br>
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!-- Misty one -->
+       <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+          <div class="col-lg-6">
+            <img class="img-fluid" src="img/bigbang.jpg" alt="">
+          </div>
+          <div class="col-lg-6">
+            <div class="bg-black text-center h-100 project">
+              <div class="d-flex h-100">
+                <div class="project-text w-100 my-auto text-center text-lg-left">
+                  <h4 class="text-white">The difference in the number of opposites is 6</h4>
+                  <p class="mb-0 text-white-50">Try deducting a larger number with the number across it,</p>
+                  <hr class="d-none d-lg-block mb-0 ml-0">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<!-- Misty two -->
+        <!-- Project Two Row -->
+        <div class="row justify-content-center no-gutters">
+          <div class="col-lg-6">
+            <img class="img-fluid" src="img/rounded.jpg" alt="">
+          </div>
+          <div class="col-lg-6 order-lg-first">
+            <div class="bg-black text-center h-100 project">
+              <div class="d-flex h-100">
+                <div class="project-text w-100 my-auto text-center text-lg-right">
+                  <h4 class="text-white">Time hystory</h4>
+                  <p class="mb-0 text-white-50">At the time of the dinosaurs, there were 370 days a year. The earth rotates because the moon is like an anchor, the days are longer 1.7 milliseconds per century.</p>
+                  <hr class="d-none d-lg-block mb-0 mr-0">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </section>
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section bg-light">
+      <div class="container">
+        <center>
+
+</center>
+<br>
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!-- Misty one -->
+       <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+          <div class="col-lg-6">
+            <img class="img-fluid" src="img/analog.jpg" alt="">
+          </div>
+          <div class="col-lg-6">
+            <div class="bg-black text-center h-100 project">
+              <div class="d-flex h-100">
+                <div class="project-text w-100 my-auto text-center text-lg-left">
+                  <h4 class="text-white">Just do it</h4>
+                  <p class="mb-0 text-white-50">Scientifically there is no such thing as "now". Because you are playing this second playback, this playback will be summer soon</p>
+                  <hr class="d-none d-lg-block mb-0 ml-0">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<!-- Misty two -->
+        <!-- Project Two Row -->
+        <div class="row justify-content-center no-gutters">
+          <div class="col-lg-6">
+            <img class="img-fluid" src="img/demo-image-02.jpg" alt="">
+          </div>
+          <div class="col-lg-6 order-lg-first">
+            <div class="bg-black text-center h-100 project">
+              <div class="d-flex h-100">
+                <div class="project-text w-100 my-auto text-center text-lg-right">
+                  <h4 class="text-white">Types of time</h4>
+                  <p class="mb-0 text-white-50">There are three types of time known, you know! Objective, subjective and biological time. Objective time is what you see on the hour, date, day, week, month and year. Subjective time is the length of time that revolving time is affected by the experience you experience.</p>
+                  <hr class="d-none d-lg-block mb-0 mr-0">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+<br>
+<br>
+<br>
+<br>
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <center><!-- Signup Section -->
+    <section id="signup" class="signup-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-lg-8 mx-auto text-center">
+
+            <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
+            <h2 class="text-white mb-5">Thanks for visiting this website</h2>
+            <form class="form-inline d-flex">
+              
+            </form>
+            </div>
+          </div>
+          </div>
+      </div>
+    </section>
+</center>
+    <!-- Contact Section -->
+    <section class="contact-section bg-black">
+      <div class="container">
+
+        <div class="row">
+
+
+
+          
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <center>
+    <footer class="bg-black small text-center text-white-50">
+      <div class="container">
+        Copyright &copy; ArgentaOOfficial
+      </div>
+    </footer>
+</center>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/grayscale.min.js"></script>
+
+  </body>
+
+</html>
+
+
+<style type="text/css">
+
+.bungkus {
+width: 960px;
+position: relative;
+margin:0 auto;
+line-height: 1.4em;
+right: 15%;
+
+  }
+@media only screen and (max-width: 479px){
+    .bungkus { width: 90%; }
+}
+
+input{position:relative;}
+.musicloc{margin-right:150px;}
+
+form {
+  width: 50%;
+}
+
+.subs {
+  margin-left: 93px;
+}
+
+</style>
